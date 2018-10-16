@@ -15,3 +15,7 @@ sheldon_game <- function(player1 , player2) {
     }
   }
 }
+
+my_moving_median <- function(x , n, ...){
+  return(unlist(lapply(1:(length(x) - n), function(y) median(x[y:(y + n)], na.rm = ...))))
+}
