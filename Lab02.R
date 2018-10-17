@@ -1,3 +1,6 @@
+name = "Ruben Munoz"
+liuid = "123"
+
 sheldon_game <- function(player1 , player2) {
   alt <- c("rock", "lizard", "spock", "scissors", "paper")
   stopifnot(player1 %in% alt, player2 %in% alt)
@@ -97,5 +100,22 @@ repeat_my_moving_median <- function(x, n, ...){
   }
   return(v)
 }
-# print(repeat_my_moving_median(x = 5:15, n=4))
-# print(repeat_my_moving_median(x = c(5,1,2,NA,2,5,6,8,9,9), n=2))
+
+in_environment <- function(env){
+  return(ls(env))
+}
+
+cov <- function(X){
+  if(!is.data.frame(X)){
+    stop()
+  }
+  return(unlist(lapply(X, function(y) sd(y)/mean(y))))
+}
+
+moment <- function(i){
+  stopifnot(is.numeric(i), TRUE)
+  function(y) {
+    a = mean((y - mean(y))^i)
+    return(a)
+  } 
+}
